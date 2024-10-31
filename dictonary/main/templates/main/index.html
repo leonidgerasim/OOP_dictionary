@@ -1,0 +1,35 @@
+{% extends 'main/base.html'%}
+
+{% block css %}
+.title {
+    background-color: #FFFFFF;
+    color: black;
+    padding: 10px 20px;
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 3px;
+    }
+.description {
+    background-color: #FFFFFF;
+    color: black;
+    padding: 10px 20px;
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 3px;
+    }
+{% endblock %}
+
+{% block content %}
+<div>
+    <h4 class="title">Словарь иностранных слов</h4>
+    <p class="description">
+        На сайте есть возможность просматривать список иностранных слов с переводом
+        и добавлять новые.
+    </p>
+</div>
+<div>
+    <a href="{% url 'main:words_list' %}" class="btn">Список слов</a>
+</div>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'main/base.html'%}
+
+{% block css %}
+{% endblock %}
+
+{% block content %}
+<form action="{% url 'main:add_word' %}" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit">Составить</button>
+    <a href="{% url 'main:words_list' %}" class="btn">Выйти</a>
+</form>
+{% endblock %}
