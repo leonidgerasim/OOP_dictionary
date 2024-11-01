@@ -7,8 +7,8 @@ from .forms import WordForm
 
 
 def index(request):
-    df = pd.DataFrame({'Слово': ['word'], 'Перевод': ['Слово']})
-    df.to_csv('table.csv')
+    # df = pd.DataFrame({'Слово': [], 'Перевод': []})
+    # df.to_csv('table.csv')
     context = {'title': 'Домашняя страница'}
     return render(request, 'main/index.html', context)
 
@@ -31,9 +31,9 @@ def add_word(request):
         if form.is_valid():
             word = form.cleaned_data.get('word')
             p = form.cleaned_data.get('p')
-            with open('table.csv', 'w', newline='', encoding='utf-8') as file:
-                writer = csv.writer(file)
-                writer.writerow([word, p])
+            table = pd.read_csv('table.csv', encoding='utf-8')
+            table.loc[len(table.index)] = [len(table.index), word, p]
+            table.to_csv('table.csv')
     else:
         form = WordForm()
 
